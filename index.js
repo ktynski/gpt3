@@ -22,9 +22,22 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   }
   
   function rhymingWordHandler(agent){
-    const word = agent.parameters.word;
-    agent.add(`Here are the rhyming words for ${word}`);
-    return axios.get(`https://api.datamuse.com/words?rel_rhy=${word}`)
+    const echoText = agent.parameters.echoText;
+    agent.add(`Starting your conversation with ${echoText}`);
+    return axios.get(`https://api.openai.com/v1/engines/davinci/completions`,{
+    prompt: ${EchoText},
+    max_tokens: 200,
+    temperature: 1,
+    top_p: 1,
+    n: 1,
+    stream: false,
+    logprobs: null,
+    stop: "\n"
+  } {
+  headers: {
+    'Authorization': `Bearer ${sk-ISWRgnKL9aukjhBzeMWeDp6Eu7dZrCpPgdWi5hAQ}`
+  }
+})
     .then((result) => {
         result.data.map(wordObj => {
         	agent.add(wordObj.word);
