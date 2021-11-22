@@ -35,7 +35,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     stop: "\n"
   } {
   headers: {
-    'Authorization': `Bearer ${sk-ISWRgnKL9aukjhBzeMWeDp6Eu7dZrCpPgdWi5hAQ}`
+    'Authorization': `Bearer ${sk-1mUCXLtt488C9LuOfEjTVlDQ88Ib9tEkPb6ppTSI}`
   }
 })
     .then((result) => {
